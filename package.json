@@ -6,7 +6,7 @@
   "scripts": {
     "test": "nodemon index.js NODE_ENV=test",
     "create_db_test": "NODE_ENV=test npx sequelize-cli db:create",
-    "migrations_test": "npx sequelize-cli db:migrate NODE_ENV=test"
+    "migrations_test": "npx sequelize-cli db:migrate"
   },
   "keywords": [
     "Muta",
@@ -16,7 +16,7 @@
   "author": "Ruben Gomez",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "5.1.1",
+    "bcryptjs": "2.4.3",
     "dotenv": "16.4.1",
     "express": "4.18.2",
     "jsonwebtoken": "9.0.2",
