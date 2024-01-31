@@ -1,8 +1,7 @@
-import http from "node:http";
-import express from "express";
-import pkg from 'body-parser';
+const http = require("node:http");
+const express = require("express");
+const { json } = require('body-parser');
 
-const { json } = pkg;
 const app = express()
 const server = http.createServer(app);
 app.use(express.urlencoded({ limit: '10mb', extended: true }));

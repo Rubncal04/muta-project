@@ -1,4 +1,4 @@
-import dotenv from 'dotenv';
+const dotenv = require('dotenv');
 
 dotenv.config();
 
@@ -17,4 +17,4 @@ const ENV_VARIABLES = Object.freeze({
   LOGGING: (process.env.LOGGING === 'true')
 });
 
-export default ENV_VARIABLES;
+module.exports = ENV_VARIABLES;

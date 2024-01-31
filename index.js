@@ -1,6 +1,6 @@
-import { server, app } from "./src/server.js";
+const { server, app } =  require("./src/server.js");
 // import routes from "./src/config/routes.js";
-import ENV_VARIABLES from "./src/config/env_variables.js";
+const ENV_VARIABLES = require("./src/config/env_variables.js");
 
 const PORT = ENV_VARIABLES.PORT || 3307
 

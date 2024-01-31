@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Este es un proyecto de prueba para Muta",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "test": "nodemon index.js NODE_ENV=test",
-    "create_db": "npx sequelize-cli db:create"
+    "create_db_test": "NODE_ENV=test npx sequelize-cli db:create",
+    "migrations_test": "npx sequelize-cli db:migrate NODE_ENV=test"
   },
   "keywords": [
     "Muta",

@@ -1,6 +1,6 @@
-import ENV_VARIABLES from "./env_variables.js";
+const ENV_VARIABLES = require("./env_variables.js");
 
-export default {
+module.exports = {
   test: {
     username: ENV_VARIABLES.USER_NAME,
     password: ENV_VARIABLES.PASSWORD,
