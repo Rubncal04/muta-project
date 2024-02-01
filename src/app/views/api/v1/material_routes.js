@@ -40,6 +40,17 @@ const materialRoutes = (app) => {
     await material.create(req, res);
   })
 
+  app.post('/api/v1/best-route', async (req, res) => {
+    const auth = await authorization(req);
+    if (!auth) {
+      return res.status(401).json({
+        message: 'Unauthorized user'
+      })
+    }
+
+    material.calculateBestRoute(req, res);
+  })
+
   app.put('/api/v1/materials/:id', async (req, res) => {
     const auth = await authorization(req);
     if (!auth) {

@@ -113,7 +113,25 @@ class MaterialsController {
         message: "Material successfully deleted"
       })
     } catch (error) {
-      console.log(error);
+      res.status(500).json({
+        message: 'Something went wrong'
+      })
+    }
+  }
+
+  calculateBestRoute(req, res) {
+    try {
+      const { materials, totalLimitWeight } = req.body;
+      const newMaterialsList = materials.filter(material => material.weight <= totalLimitWeight).sort((a, b) => a.weight - b.weight);
+
+      if (newMaterialsList.length <= 0) {
+        return res.status(200).json({
+          message: "The route is not optimized"
+        });
+      }
+
+      res.status(200).json(newMaterialsList);
+    } catch (error) {
       res.status(500).json({
         message: 'Something went wrong'
       })
