@@ -11,6 +11,7 @@ module.exports = {
       },
       materialId: {
         type: Sequelize.BIGINT,
+        allowNull: false,
         references:{
           model:'Materials',
           key:'id',
