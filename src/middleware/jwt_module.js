@@ -1,4 +1,4 @@
-const User = require('../app/models/user');
+const { User } = require('../app/models');
 const ENV_VARIABLES = require('../config/env_variables');
 const jwt = require('jsonwebtoken');
 
@@ -19,7 +19,7 @@ const JWTModule = {
     try {
       if (!token) return null;
       const { id } = jwt.verify(token, JWT_KEY);
-      const user = await User.findById(id);
+      const user = await User.findByPk(id);
 
       return user;
     } catch (error) {

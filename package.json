@@ -4,8 +4,8 @@
   "description": "Este es un proyecto de prueba para Muta",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon index.js NODE_ENV=test",
-    "create_db_test": "NODE_ENV=test npx sequelize-cli db:create",
+    "test": "nodemon index.js",
+    "create_db": "npx sequelize-cli db:create",
     "migrations_test": "npx sequelize-cli db:migrate"
   },
   "keywords": [
