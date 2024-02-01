@@ -16,9 +16,7 @@ class MaterialsController {
         })
       }
 
-      res.status(200).json({
-        materials
-      })
+      res.status(200).json(materials)
     } catch (error) {
       res.status(404).json({
         message: "Something went wrong"
@@ -38,7 +36,7 @@ class MaterialsController {
       });
 
       if (!material) {
-        res.status(200).json({
+        return res.status(200).json({
           message: "Material not found"
         })
       }
@@ -104,7 +102,7 @@ class MaterialsController {
       })
 
       if (!deletedMaterial) {
-        res.status(200).json({
+        return res.status(200).json({
           message: "Material not found"
         })
       }

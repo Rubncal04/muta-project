@@ -5,11 +5,15 @@ const bcrypt = require('bcryptjs');
 class UserController {
   async login(req, res) {
     try {
-      const { userName, password } = req.body
-      const userLogged = await User.findOne({ userName: userName });
+      const { userName, password } = req.body;
+      const userLogged = await User.findOne({
+        where: {
+          userName
+        }
+      });
 
       if (!userLogged) {
-        res.status(404).json({
+        return res.status(401).json({
           message: 'User not found'
         })
       }
@@ -17,16 +21,16 @@ class UserController {
       if (userLogged && bcrypt.compareSync(password, userLogged.password)) {
         const token = JWTModule.encode(userLogged.id);
 
-        res.status(500).json({
+        res.status(200).json({
           token
         })
       } else {
-        res.status(404).json({
+        res.status(400).json({
           message: 'Invalid credentials'
         })
       }
     } catch (error) {
-      res.status(404).json({ error: "Something went wrong" });
+      res.status(500).json({ error: "Something went wrong" });
     }
   }
 
@@ -43,7 +47,7 @@ class UserController {
         })
       }
     } catch (error) {
-      res.status(404).json({ error: "Something went wrong" });
+      res.status(500).json({ error: "Something went wrong" });
     }
   }
 }
