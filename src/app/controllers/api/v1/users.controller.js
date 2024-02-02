@@ -22,6 +22,7 @@ class UserController {
         const token = JWTModule.encode(userLogged.id);
 
         res.status(200).json({
+          user: userLogged,
           token
         })
       } else {
@@ -43,6 +44,7 @@ class UserController {
         const token = JWTModule.encode(newUser.id);
 
         res.json({
+          user: newUser,
           token
         })
       }
