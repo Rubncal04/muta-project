@@ -120,7 +120,13 @@ class MaterialsController {
   calculateBestRoute(req, res) {
     try {
       const { materials, totalLimitWeight } = req.body;
-      const newMaterialsList = materials.filter(material => material.weight <= totalLimitWeight).sort((a, b) => a.weight - b.weight);
+      const newMaterialsList = materials.filter(material => parseFloat(material.weight) <= parseFloat(totalLimitWeight))
+        .map(material => {
+          material.totalPrice = Number((material.price * material.weight).toFixed(2));
+          return material;
+        });
+
+      newMaterialsList.sort((a, b) => b.totalPrice - a.totalPrice);
 
       if (newMaterialsList.length <= 0) {
         return res.status(200).json({
