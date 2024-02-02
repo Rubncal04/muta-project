@@ -64,7 +64,7 @@ class CollectionsController {
       const collection = await Collection.create({ materialId, quantity, date })
 
       if (!collection) {
-        res.status(200).json({
+        return res.status(200).json({
           message: "It couldn't be created"
         })
       }
@@ -90,7 +90,7 @@ class CollectionsController {
       })
 
       if (!updatedCollection) {
-        res.status(200).json({
+        return res.status(200).json({
           message: "It couldn't be updated"
         })
       }
@@ -116,7 +116,7 @@ class CollectionsController {
       })
 
       if (!deletedCollection) {
-        res.status(200).json({
+        return res.status(200).json({
           message: "It couldn't be deleted"
         })
       }
