@@ -64,3 +64,52 @@ npm run start
 ```
 
 ¡Ahora estás listo para empezar a trabajar en tu proyecto!
+
+Aquí está la sección adicional sobre los test de modelos y rutas:
+
+
+## Pruebas de Modelos
+
+Dentro del proyecto, encontrarás una carpeta llamada `specs`, y dentro de ella, una carpeta llamada `models`, donde se alojan todas las pruebas de modelos para las diferentes entidades manejadas.
+
+Para ejecutar los tests, puedes utilizar el siguiente comando:
+
+```bash
+npm run test
+```
+
+Este comando ejecutará todos los tests integrados en el proyecto. Si deseas especificar qué tests ejecutar, puedes hacerlo de la siguiente manera:
+
+```bash
+npm run test {ruta del archivo que quieres testear}
+```
+
+Por ejemplo:
+
+```bash
+npm run test ./src/specs/models/user.spec.js
+```
+
+## Pruebas de Rutas
+
+Al igual que con los modelos, existen pruebas para probar las rutas y asegurarse de que estas estén creando los diferentes registros correctamente.
+
+Para ejecutar los tests de rutas, puedes utilizar el siguiente comando para ejecutar todos los tests existentes dentro del proyecto:
+
+```bash
+npm run test
+```
+
+O, si deseas ejecutar solo un archivo de test específico, puedes hacerlo de la siguiente manera:
+
+```bash
+npm run test {ruta del archivo de prueba}
+```
+
+Por ejemplo:
+
+```bash
+npm run test ./src/specs/routes/user.spec.js
+```
+
+Es importante tener en cuenta que en los tests hay información pegada, por lo que si necesitas que todos los tests pasen, debes asegurarte de tener registros en la base de datos y modificar los tokens de autenticación según sea necesario.
