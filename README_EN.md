@@ -64,3 +64,52 @@ npm run start
 ```
 
 Now you are ready to start working on your project!
+
+Aquí está la sección adicional sobre las pruebas de modelos y rutas agregada al README en formato Markdown, pero esta vez en inglés:
+
+## Model Tests
+
+Inside the project, you will find a folder named `specs`, and within it, a folder named `models`, where all model tests for the different entities managed are housed.
+
+To run the tests, you can use the following command:
+
+```bash
+npm run test
+```
+
+This command will execute all integrated tests in the project. If you wish to specify which tests to run, you can do so as follows:
+
+```bash
+npm run test {path to the file you want to test}
+```
+
+For example:
+
+```bash
+npm run test ./src/specs/models/user.spec.js
+```
+
+## Route Tests
+
+Similar to model tests, there are tests to test the routes and ensure that they are creating the different records correctly.
+
+To execute the route tests, you can use the following command to run all existing tests within the project:
+
+```bash
+npm run test
+```
+
+Alternatively, if you want to run only a specific test file, you can do so as follows:
+
+```bash
+npm run test {path to the test file}
+```
+
+For example:
+
+```bash
+npm run test ./src/specs/routes/user.spec.js
+```
+
+It is important to note that there is hardcoded information in the tests, so if you need all tests to pass, you must ensure that there are records in the database and modify authentication tokens as needed.
+
