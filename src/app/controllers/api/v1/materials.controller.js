@@ -120,13 +120,21 @@ class MaterialsController {
   calculateBestRoute(req, res) {
     try {
       const { materials, totalLimitWeight } = req.body;
-      const newMaterialsList = materials.filter(material => parseFloat(material.weight) <= parseFloat(totalLimitWeight))
-        .map(material => {
-          material.totalPrice = Number((material.price * material.weight).toFixed(2));
-          return material;
-        });
+      const newMaterialsList = materials.filter(material => material.weight <= totalLimitWeight)
+        .map(material => ({
+          ...material,
+          totalPrice: (material.price * material.weight).toFixed(2),
+        }));
 
       newMaterialsList.sort((a, b) => b.totalPrice - a.totalPrice);
+
+      const totalPrices = newMaterialsList.reduce((accumulator, object) => {
+        return accumulator + object.totalPrice;
+      }, 0);
+
+      const totalWeights = newMaterialsList.reduce((accumulator, object) => {
+        return accumulator + object.weight;
+      }, 0);
 
       if (newMaterialsList.length <= 0) {
         return res.status(200).json({
@@ -134,7 +142,11 @@ class MaterialsController {
         });
       }
 
-      res.status(200).json(newMaterialsList);
+      res.status(200).json({
+        newMaterialsList,
+        totalWeights,
+        totalPrices
+      });
     } catch (error) {
       res.status(500).json({
         message: 'Something went wrong'
